@@ -26,7 +26,13 @@ namespace myalgo
                 arrayMethodsTest.printContentsOfArray(testArray);
                 arrayMethodsTest.printMaxValueInArray(testArray);
                 //Can it handle negatives?
-                arrayMethodsTest.printMaxValueInArray(new int[5] {-45, -3, -2, 8, 100});
+
+                int[] arrayWithNegativeValues = createArrayOfIntsOfNSized(10, -4);
+                Console.WriteLine("Expect nums [-4, 6] values in size 10 array------------");
+                Console.WriteLine(String.Join(", ", arrayWithNegativeValues));
+                Console.WriteLine("Array test end----------");
+
+                arrayMethodsTest.printMaxValueInArray(arrayWithNegativeValues);
 
             } catch (Exception ex)
             {
@@ -42,6 +48,16 @@ namespace myalgo
             for (int i = 0; i < n; i++)
             {
                 ints[i] = i;
+            }
+            return ints;
+        }
+        public static int[] createArrayOfIntsOfNSized(int n, int startValue)
+        {
+            int[] ints = new int[n];
+            int index = 0;
+            for (int i = startValue; i < startValue + n; i++)
+            {
+                ints[index++] = i;
             }
             return ints;
         }
