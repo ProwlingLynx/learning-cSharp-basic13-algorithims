@@ -52,5 +52,40 @@ namespace myalgo.algoclasses
             }
             return numbers.ToArray();
         }
+
+        public void countNumberOfIntsGreaterThanY(int[] numbers, int y)
+        {
+            Console.WriteLine("Begin counting of items greater than y-------------");
+            int count = 0;
+            foreach(int number in numbers)
+            {
+                if (number > y) 
+                { 
+                    count++;
+                }
+            }
+            Console.WriteLine($"The number of items greater than {y} are {count}");
+            Console.WriteLine("End of test----------------");
+        }
+        public void printMinMaxAverageInArray(int[] array)
+        {
+            if (array.Length == 0)
+            {
+                Console.WriteLine("Please use an array with at least one value");
+                return;
+            }
+            int min = int.MaxValue;
+            int max = int.MinValue;
+            double avg = 0;
+            foreach(int number in array)
+            {
+                min = Math.Min(min, number);
+                max = Math.Max(max, number);
+                avg += (double)number / (double)array.Length;
+            }
+            Console.WriteLine($"The minimum value found is: {min}. The maximum value found is: {max}. The average value is: {avg}");
+        }
+
+
     }
 }
