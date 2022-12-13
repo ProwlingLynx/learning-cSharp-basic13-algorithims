@@ -33,7 +33,11 @@ namespace myalgo
                 Console.WriteLine("Array test end----------");
 
                 arrayMethodsTest.printMaxValueInArray(arrayWithNegativeValues);
-
+                arrayMethodsTest.printAverageTotalInIntArray(testArray);
+                arrayMethodsTest.printAverageTotalInIntArray(arrayWithNegativeValues);
+                int[] oddArray = arrayMethodsTest.returnArrayOfOddIntsSize255();
+                printArrayContents(oddArray);
+                
             } catch (Exception ex)
             {
                 Console.WriteLine("Test failed!");
@@ -60,6 +64,15 @@ namespace myalgo
                 ints[index++] = i;
             }
             return ints;
+        }
+        public static void printArrayContents(int[] array)
+        {
+            Console.WriteLine("Start of array print ------------------");
+            foreach(int number in array)
+            {
+                Console.Write($"{number} ");
+            }
+            Console.WriteLine("\nEnd of array print ----------------");
         }
     }
 }

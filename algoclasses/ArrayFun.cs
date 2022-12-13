@@ -29,5 +29,28 @@ namespace myalgo.algoclasses
             Console.WriteLine($"The largest value in the array is: {largestValueSoFar}");
             Console.WriteLine("End test------------------------");
         }
+
+        public void printAverageTotalInIntArray(int[] numbersArray)
+        {
+            Console.WriteLine("Test start---------------");
+            int totalSum = 0;
+            for (int i = 0; i < numbersArray.Length; i++)
+            {
+                totalSum += numbersArray[i];
+            }
+            double average = (double)totalSum / (double)numbersArray.Length;
+            Console.WriteLine($"There are: {numbersArray.Length} numbers. The total is: {totalSum}. The average is: {average}");
+            Console.WriteLine("End of test----------------------");
+        }
+
+        public int[] returnArrayOfOddIntsSize255()
+        {
+            List<int> numbers = new List<int>();
+            for (int i = 1; i <= 255; i+= 2)
+            {
+                numbers.Add(i);
+            }
+            return numbers.ToArray();
+        }
     }
 }
