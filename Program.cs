@@ -15,10 +15,18 @@ namespace myalgo
                 testPrint255.print255Nums();
                 testPrint255.printOddNums255();
                 testPrint255.print255PlusSum();
+
+
                 int[] testArray = createArrayOfIntsOfNSized(10);
                 Console.WriteLine("Expect nums 0 - 9 values in size 10 array------------");
                 Console.WriteLine(String.Join(", ", testArray));
                 Console.WriteLine("Array test end----------");
+
+                ArrayFun arrayMethodsTest = new ArrayFun();
+                arrayMethodsTest.printContentsOfArray(testArray);
+                arrayMethodsTest.printMaxValueInArray(testArray);
+                //Can it handle negatives?
+                arrayMethodsTest.printMaxValueInArray(new int[5] {-45, -3, -2, 8, 100});
 
             } catch (Exception ex)
             {
