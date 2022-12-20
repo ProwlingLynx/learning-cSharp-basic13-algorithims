@@ -118,6 +118,39 @@ namespace MyAlgos
             {
                 Console.WriteLine(value);
             }
+
+            // Eliminate all negative numbers in an array by replacing them with 0
+            // We can reuse our old code for counting values greater than Y
+            // Lets build a method that does this and prints the values.
+            int[] negativeTestArray2 = { -1, 3, -3, -4, 80, -888 };
+            ReplaceNegativeValuesWithZero(negativeTestArray2);
+
+            // This method displays the min, max, and avg in a given array.
+            // We have solved all these problems before. Lets make the method
+            // and combine them.
+            int[] mixedArray = { -1, 2, 3, 4, -5, -7, 10 };
+            DisplayMinMaxAvg(mixedArray);
+
+            // Shift each value in an array by one to the left and replace the value with a zero
+            // Lets try and use an Array List and see how it goes.
+            ArrayList mixedList = new ArrayList();
+            mixedList.Add(1);
+            mixedList.Add(2);
+            mixedList.Add(3);
+            mixedList.Add(4);
+            mixedList.Add(5);
+            ShiftArrayByOne(mixedList);
+
+            // Replace all negative values with a dojo string
+            // We have solved a similar issue with count with Y.
+            // The challenge here is that we cannot put a string value into an int array
+            // Therefore we must use an arrayList as our final form.
+            
+            int[] allNegativeValues = { -1, -2, -3, -4, -5, -6 };
+            ReplaceNEgativesWithDojo(allNegativeValues);
+
+            int[] mixedNegativesAndPositives = { -1, -2, -3, -4, -5, -6, 1, 2, 3, 4, 5 };
+            ReplaceNEgativesWithDojo(mixedNegativesAndPositives);
         }
         // the keyword static means a method that is located on the class, not the object.
         public static void CreateArrayOfOddNumbers()
@@ -152,6 +185,98 @@ namespace MyAlgos
             {
                 int value = array[index];
                 array[index] = value * value; // We access the array and reassign the value through math.
+            }
+        }
+        public static void ReplaceNegativeValuesWithZero(int[] array)
+        {
+            // A little touch up here.
+            for (int index = 0; index < array.Length; index++)
+            {
+                int value = array[index]; 
+                if (value < 0)
+                {
+                    array[index] = 0;
+                }
+            }
+            // lets make sure it worked.
+            for (int index = 0; index < array.Length; index++)
+            {
+                Console.WriteLine(array[index]);
+            }
+
+        }
+        public static void DisplayMinMaxAvg(int[] array)
+        {
+            // We can refactor the solution and make it more elegant, but
+            // The idea is to highligtht that we did solve these problems before
+
+            int maxSoFar;
+            maxSoFar = array[0]; 
+            for (int index = 1; index < array.Length; index++) 
+            {
+                int value = array[index];
+                if (value > maxSoFar)
+                {
+                    maxSoFar = value;
+                }
+            }
+            Console.WriteLine("The max value is: " + maxSoFar);
+
+            int totalValueOfList = 0;
+            int[] listOfNumbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
+            for (int index = 0; index < listOfNumbers.Length; index++)
+            {
+                totalValueOfList += listOfNumbers[index];
+            }
+
+            int sizeOfList = listOfNumbers.Length;
+
+            int averageOfList = totalValueOfList / sizeOfList;
+            // We can make this very terse using the value in a long chaing, but for learning we are being verbose here.
+            Console.WriteLine("The average of our list is: " + averageOfList);
+
+            int minSoFar;
+            minSoFar= array[0];
+            for (int index = 1; index < array.Length; index++)
+            {
+                int value = array[index];
+                if (value < minSoFar)
+                {
+                    minSoFar = value;
+                }
+            }
+            Console.WriteLine("The min value is: " + minSoFar);
+        }
+        public static void ShiftArrayByOne(ArrayList arrayList)
+        {
+            arrayList.RemoveAt(0);// RemoveAt removes element at given index
+            arrayList.Add(0); // Now we add our zero
+            //Lets make sure we did it correctly
+            foreach(int value in arrayList)
+            {
+                Console.WriteLine(value);
+            }
+        }
+        public static void ReplaceNEgativesWithDojo(int[] array)
+        {
+            ArrayList myList = new ArrayList();
+            for (int index = 0; index < array.Length; index++)
+            {
+                int value = array[index]; // Every time the loop iterates this value is recreated and assigned.
+                if (value < 0)
+                {
+                    myList.Add("Dojo");
+                } else
+                {
+                    myList.Add(value);
+                }
+            }
+
+            // Just like always, lets make sure it works!
+            foreach(var value in myList) // var is a lazy way of saying we have no idea what the expected type is
+            {
+                // In this case we should use var since our list is mixed.
+                Console.WriteLine(value);
             }
         }
     }
