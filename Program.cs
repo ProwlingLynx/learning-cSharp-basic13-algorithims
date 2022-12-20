@@ -1,4 +1,6 @@
-﻿namespace MyAlgos
+﻿using System.Collections;
+
+namespace MyAlgos
 {
     public class Basic13
     {
@@ -13,7 +15,7 @@
 
             // Using a for loop print odd numbers 1 - 255
             // Same as above. Using math logic we know that adding 2 to an odd number is always odd
-            // This works b/c i is always odd and we will never equal 256.
+            // This works b/c i is always odd.
             for (int i = 1; i < 256; i += 2)
             {
                 Console.WriteLine(i);
@@ -61,7 +63,78 @@
             }
             Console.WriteLine("The max value of our mixed array is: " + maxSoFar);
 
-            // Find
+            // Find the average of a given array.
+            // average is defined as the total of a list of numbers divided by the number of values added together.
+            // We can break this up into add total, get the size of the list, divide by the size of the list
+            int totalValueOfList = 0;
+            int[] listOfNumbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
+            for (int index = 0; index < listOfNumbers.Length; index++)
+            {
+                totalValueOfList += listOfNumbers[index];
+            }
+
+            int sizeOfList = listOfNumbers.Length;
+
+            int averageOfList = totalValueOfList / sizeOfList;
+            // We can make this very terse using the value in a long chaing, but for learning we are being verbose here.
+            Console.WriteLine("The average of our list is: " + averageOfList);
+
+            // Find all values greater than Y.
+            // We are only interested in the number of values greater than Y. Not their values
+            int countOfValuesGreaterThanY = 0;
+            int Y = 4;
+            for (int index = 0; index < listOfNumbers.Length; index++)
+            {
+                int value = listOfNumbers[index]; // Every time the loop iterates this value is recreated and assigned.
+                if (value > Y)
+                {
+                    countOfValuesGreaterThanY++;
+                }
+            }
+            Console.WriteLine("The total number of values greater than Y is: " + Y);
+
+            // Create an array with all odd values between 1 and 255;
+            // We can re use our previous solution that printed odd values between 1 and 255 and refactor it.
+            // Since we are not sure about the number of values in the final array we should use a list.
+            // Lists can be of variable lengths. Unlike arrays
+            // Time to make a method!
+            CreateArrayOfOddNumbers();
+
+            // Create a method that takes an array and returns the number of values greater than Y in the array
+            // We did something similar before, lets reuse it!
+            // This method will have two parameters and return a value
+            // Something I learned early on in my journey: I have yet to see a function/method return more than one thing at a time ;D
+            int[] testArray = { 100, 200, 300, 400, 500, 600, 700, 800 };
+            int numberGreaterThanY = CountValuesGreaterThanY(testArray, 433);
+            Console.WriteLine("Number of values greater than in our test array is: " + numberGreaterThanY);
+
+        }
+        // the keyword static means a method that is located on the class, not the object.
+        public static void CreateArrayOfOddNumbers()
+        {
+            ArrayList myList = new ArrayList(); // Notes: ArrayList can be of any size (memory allowing) and can store any data type. Mixed types included!
+            for (int i = 1; i < 256; i += 2)
+            {
+                myList.Add(i); // Unlike an array, we must use the method Add() in order to add a value to the list myList represents.
+            }
+            // We need to know if our method worked. Time to iterate over our list using the good ol' for loop
+            for (int index = 0; index < myList.Count; index++) // Note: Use the Count property instead of Length
+            {
+                Console.WriteLine(myList[index]); // ArrayList has some overlapping features with Arrays. We can access the value at index using bracket notation. 
+            }
+        }
+        public static int CountValuesGreaterThanY(int[] array, int Y)
+        {
+            int count = 0;
+            for (int index = 0; index < array.Length; index++)
+            {
+                int value = array[index];
+                if (value > Y)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 }
