@@ -108,6 +108,16 @@ namespace MyAlgos
             int numberGreaterThanY = CountValuesGreaterThanY(testArray, 433);
             Console.WriteLine("Number of values greater than in our test array is: " + numberGreaterThanY);
 
+            // Square values in the original array
+            // Note: We are not making a new array. Rather we are mutating the original.
+            // cont'd: Any value we pass to a method that is a reference can be modified by the method. This is called a side effect.
+            int[] numbersSquared = { 1, 2, 3, 4, 5, 6 };
+            SquareValuesInTheArray(numbersSquared);
+            // We need to know if it worked. So lets try out a foreach this time.
+            foreach (int value in numbersSquared) // Syntax note: keyword foreach, variable, keyword in, array/ArrayList
+            {
+                Console.WriteLine(value);
+            }
         }
         // the keyword static means a method that is located on the class, not the object.
         public static void CreateArrayOfOddNumbers()
@@ -135,6 +145,14 @@ namespace MyAlgos
                 }
             }
             return count;
+        }
+        public static void SquareValuesInTheArray(int[] array)
+        {
+            for (int index = 0; index < array.Length; index++)
+            {
+                int value = array[index];
+                array[index] = value * value; // We access the array and reassign the value through math.
+            }
         }
     }
 }
